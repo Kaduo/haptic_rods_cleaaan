@@ -25,5 +25,5 @@ proto: proto/*.proto
 run: build
 	./haptic_rods
 
-build: $(CSRC)
+build_tablet: $(CSRC)
 	$(CC) $(CFLAGS) $(CSRC) $(NANOPB_SRC) -I../../raylib -lraylib -o haptic_rods
