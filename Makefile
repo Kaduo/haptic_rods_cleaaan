@@ -25,26 +25,5 @@ proto: proto/*.proto
 run: build
 	./haptic_rods
 
-RAYLIB_PATH           ?= ../../raylib
-RAYLIB_RELEASE_PATH 	?= $(RAYLIB_PATH)/src
-RAYLIB_INCLUDE_PATH   ?= /usr/local/include
-RAYLIB_LIB_PATH       ?= /usr/local/lib
-INCLUDE_PATHS = -I. -I$(RAYLIB_PATH)/src -I$(RAYLIB_PATH)/src/external -I$(RAYLIB_PATH)/src/extras
-INCLUDE_PATHS += -I$(RAYLIB_INCLUDE_PATH)
-
-INCLUDE_PATHS += -I$(RPI_TOOLCHAIN_SYSROOT)/opt/vc/include
-INCLUDE_PATHS += -I$(RPI_TOOLCHAIN_SYSROOT)/opt/vc/include/interface/vmcs_host/linux
-INCLUDE_PATHS += -I$(RPI_TOOLCHAIN_SYSROOT)/opt/vc/include/interface/vcos/pthreads
-INCLUDE_PATHS += -I$(RPI_TOOLCHAIN_SYSROOT)/opt/vc/include
-INCLUDE_PATHS += -I$(RPI_TOOLCHAIN_SYSROOT)/opt/vc/include/interface/vmcs_host/linux
-INCLUDE_PATHS += -I$(RPI_TOOLCHAIN_SYSROOT)/opt/vc/include/interface/vcos/pthreads
-
-
-
-LDLIBS = -lraylib -lbrcmGLESv2 -lbrcmEGL -lpthread -lrt -lm -lbcm_host -ldl
-
-LDFLAGS = -L. -L$(RAYLIB_RELEASE_PATH) -L$(RAYLIB_PATH)/src `pkg-config --libs wsserver`
-LDFLAGS += -L$(RPI_TOOLCHAIN_SYSROOT)/opt/vc/lib
-
-build_tablet: $(CSRC)
-	$(CC) $(CFLAGS) $(CSRC) $(NANOPB_SRC) $(INCLUDE_PATHS) $(LDFLAGS) $(LDLIBS) -o haptic_rods
+build: $(CSRC)
+	$(CC) $(CFLAGS) $(CSRC) $(NANOPB_SRC) -I../../raylib -lraylib -o haptic_rods
