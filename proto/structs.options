@@ -1,1 +1,2 @@
 RodGroup.rods       max_count:100
+InputHistory.inputStates    max_count:100

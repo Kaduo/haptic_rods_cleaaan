@@ -51,3 +51,25 @@ message Rod {
 message RodGroup {
     repeated Rod rods = 1;
 }
+
+enum LeftMouseButtonState {
+    RELEASED = 0;
+    PRESSED = 1;
+    DOWN = 2;
+    UP = 3;
+}
+
+message MousePosition {
+    float x = 1;
+    float y = 2;
+}
+
+message InputState {
+    LeftMouseButtonState leftMouseButtonState = 1;
+    MousePosition mousePosition = 2;
+    float frameTime = 4;
+}
+
+message InputHistory {
+    repeated InputState inputStates = 1;
+}

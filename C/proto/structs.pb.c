@@ -21,6 +21,17 @@ PB_BIND(Rod, Rod, AUTO)
 PB_BIND(RodGroup, RodGroup, 4)
 
 
+PB_BIND(MousePosition, MousePosition, AUTO)
+
+
+PB_BIND(InputState, InputState, AUTO)
+
+
+PB_BIND(InputHistory, InputHistory, 2)
+
+
+
+
 
 
 

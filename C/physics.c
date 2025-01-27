@@ -2,6 +2,7 @@
 #include "raylib.h"
 #include "raymath.h"
 #include "stdio.h"
+#include "stdlib.h"
 
 typedef enum CollisionType
 {
@@ -239,6 +240,7 @@ typedef struct XYBounds {
 
 void AddBound(Bounds *bounds, Bound bound) {
   bounds->bounds[bounds->nbBounds] = bound;
+  bounds->nbBounds += 1;
 }
 
 void AddYBound(XYBounds *xyBounds, Bound bound) {
@@ -293,6 +295,7 @@ bool Move(RodGroup *rodGroup, int movingRodId, Vector2 targetTopLeft)
 
   if (xyBounds.xBounds.nbBounds <= 1 && xyBounds.yBounds.nbBounds <= 1)
   {
+    SetTopLeft(&rodGroup->rods[movingRodId], targetTopLeft);
     return false;
   }
 
@@ -304,7 +307,7 @@ bool Move(RodGroup *rodGroup, int movingRodId, Vector2 targetTopLeft)
     for (int iy = 0; iy < xyBounds.yBounds.nbBounds; iy++)
     {
       Bound yBound = xyBounds.yBounds.bounds[iy];
-      Bound xBound = xyBounds.yBounds.bounds[ix];
+      Bound xBound = xyBounds.xBounds.bounds[ix];
       if (yBound.collisionType == FROM_ABOVE)
       {
         SetBottom(&candidateRod, yBound.value);
@@ -351,4 +354,6 @@ bool Move(RodGroup *rodGroup, int movingRodId, Vector2 targetTopLeft)
   return true;
 }
 
-
+Rectangle GetRodRect(Rod rod) {
+  return (Rectangle){rod.rect.x, rod.rect.y, rod.rect.width, rod.rect.height};
+}

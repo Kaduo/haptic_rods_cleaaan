@@ -28,6 +28,13 @@ typedef enum _HapticProtocol {
     HapticProtocol_CLEAR = 133
 } HapticProtocol;
 
+typedef enum _LeftMouseButtonState {
+    LeftMouseButtonState_RELEASED = 0,
+    LeftMouseButtonState_PRESSED = 1,
+    LeftMouseButtonState_DOWN = 2,
+    LeftMouseButtonState_UP = 3
+} LeftMouseButtonState;
+
 /* Struct definitions */
 typedef struct _Signal {
     bool has_signalShape;
@@ -82,6 +89,27 @@ typedef struct _RodGroup {
     Rod rods[100];
 } RodGroup;
 
+typedef struct _MousePosition {
+    bool has_x;
+    float x;
+    bool has_y;
+    float y;
+} MousePosition;
+
+typedef struct _InputState {
+    bool has_leftMouseButtonState;
+    LeftMouseButtonState leftMouseButtonState;
+    bool has_mousePosition;
+    MousePosition mousePosition;
+    bool has_frameTime;
+    float frameTime;
+} InputState;
+
+typedef struct _InputHistory {
+    pb_size_t inputStates_count;
+    InputState inputStates[100];
+} InputHistory;
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -96,10 +124,18 @@ extern "C" {
 #define _HapticProtocol_MAX HapticProtocol_CLEAR
 #define _HapticProtocol_ARRAYSIZE ((HapticProtocol)(HapticProtocol_CLEAR+1))
 
+#define _LeftMouseButtonState_MIN LeftMouseButtonState_RELEASED
+#define _LeftMouseButtonState_MAX LeftMouseButtonState_UP
+#define _LeftMouseButtonState_ARRAYSIZE ((LeftMouseButtonState)(LeftMouseButtonState_UP+1))
+
 #define Signal_signalShape_ENUMTYPE SignalShape
 
 
 
+
+
+
+#define InputState_leftMouseButtonState_ENUMTYPE LeftMouseButtonState
 
 
 
@@ -109,11 +145,17 @@ extern "C" {
 #define _Color_init_default                      {false, 0, false, 0, false, 0, false, 0}
 #define Rod_init_default                         {false, Signal_init_default, false, _Color_init_default, false, _Rectangle_init_default, false, 0}
 #define RodGroup_init_default                    {0, {Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default}}
+#define MousePosition_init_default               {false, 0, false, 0}
+#define InputState_init_default                  {false, _LeftMouseButtonState_MIN, false, MousePosition_init_default, false, 0}
+#define InputHistory_init_default                {0, {InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default, InputState_init_default}}
 #define Signal_init_zero                         {false, _SignalShape_MIN, false, 0, false, 0, false, 0, false, 0, false, 0}
 #define _Rectangle_init_zero                     {false, 0, false, 0, false, 0, false, 0}
 #define _Color_init_zero                         {false, 0, false, 0, false, 0, false, 0}
 #define Rod_init_zero                            {false, Signal_init_zero, false, _Color_init_zero, false, _Rectangle_init_zero, false, 0}
 #define RodGroup_init_zero                       {0, {Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero, Rod_init_zero}}
+#define MousePosition_init_zero                  {false, 0, false, 0}
+#define InputState_init_zero                     {false, _LeftMouseButtonState_MIN, false, MousePosition_init_zero, false, 0}
+#define InputHistory_init_zero                   {0, {InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero, InputState_init_zero}}
 
 /* Field tags (for use in manual encoding/decoding) */
 #define Signal_signalShape_tag                   1
@@ -135,6 +177,12 @@ extern "C" {
 #define Rod_rect_tag                             3
 #define Rod_numericLength_tag                    4
 #define RodGroup_rods_tag                        1
+#define MousePosition_x_tag                      1
+#define MousePosition_y_tag                      2
+#define InputState_leftMouseButtonState_tag      1
+#define InputState_mousePosition_tag             2
+#define InputState_frameTime_tag                 4
+#define InputHistory_inputStates_tag             1
 
 /* Struct field encoding specification for nanopb */
 #define Signal_FIELDLIST(X, a) \
@@ -180,11 +228,34 @@ X(a, STATIC,   REPEATED, MESSAGE,  rods,              1)
 #define RodGroup_DEFAULT NULL
 #define RodGroup_rods_MSGTYPE Rod
 
+#define MousePosition_FIELDLIST(X, a) \
+X(a, STATIC,   OPTIONAL, FLOAT,    x,                 1) \
+X(a, STATIC,   OPTIONAL, FLOAT,    y,                 2)
+#define MousePosition_CALLBACK NULL
+#define MousePosition_DEFAULT NULL
+
+#define InputState_FIELDLIST(X, a) \
+X(a, STATIC,   OPTIONAL, UENUM,    leftMouseButtonState,   1) \
+X(a, STATIC,   OPTIONAL, MESSAGE,  mousePosition,     2) \
+X(a, STATIC,   OPTIONAL, FLOAT,    frameTime,         4)
+#define InputState_CALLBACK NULL
+#define InputState_DEFAULT NULL
+#define InputState_mousePosition_MSGTYPE MousePosition
+
+#define InputHistory_FIELDLIST(X, a) \
+X(a, STATIC,   REPEATED, MESSAGE,  inputStates,       1)
+#define InputHistory_CALLBACK NULL
+#define InputHistory_DEFAULT NULL
+#define InputHistory_inputStates_MSGTYPE InputState
+
 extern const pb_msgdesc_t Signal_msg;
 extern const pb_msgdesc_t _Rectangle_msg;
 extern const pb_msgdesc_t _Color_msg;
 extern const pb_msgdesc_t Rod_msg;
 extern const pb_msgdesc_t RodGroup_msg;
+extern const pb_msgdesc_t MousePosition_msg;
+extern const pb_msgdesc_t InputState_msg;
+extern const pb_msgdesc_t InputHistory_msg;
 
 /* Defines for backwards compatibility with code written before nanopb-0.4.0 */
 #define Signal_fields &Signal_msg
@@ -192,8 +263,14 @@ extern const pb_msgdesc_t RodGroup_msg;
 #define _Color_fields &_Color_msg
 #define Rod_fields &Rod_msg
 #define RodGroup_fields &RodGroup_msg
+#define MousePosition_fields &MousePosition_msg
+#define InputState_fields &InputState_msg
+#define InputHistory_fields &InputHistory_msg
 
 /* Maximum encoded size of messages (where known) */
+#define InputHistory_size                        2100
+#define InputState_size                          19
+#define MousePosition_size                       10
 #define PROTO_STRUCTS_PB_H_MAX_SIZE              RodGroup_size
 #define RodGroup_size                            9000
 #define Rod_size                                 88

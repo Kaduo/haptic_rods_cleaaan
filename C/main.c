@@ -5,7 +5,7 @@
 #include "graphics.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "app.h"
 
 void main() {
 
@@ -48,11 +48,19 @@ void main() {
 
     RodGroup rodGroup = RodGroup_init_zero;
     printf("\n\n %d \n\n", rod.color.a);
+    rodGroup.rods[0] = rod;
+    rodGroup.rods[1] = rod2;
+    rodGroup.rods_count = 2;
 
+    App app = {0};
+    app.rodGroup = rodGroup;
+    app.inputProvider.inputHistory = NULL;
     InitWindow(800, 200, "Hello world!");
     while (!WindowShouldClose()) {
         BeginDrawing();
-        DrawRod(myRod);
+        ClearBackground(WHITE);
+        UpdateApp(&app);
+        DrawRodGroup(&app.rodGroup);
         EndDrawing();
     }
 }
