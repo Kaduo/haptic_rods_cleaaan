@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "app.h"
+#include "signals.h"
+#include "signal_fsm.h"
 
 void main() {
 
@@ -55,6 +57,9 @@ void main() {
     App app = {0};
     app.rodGroup = rodGroup;
     app.inputProvider.inputHistory = NULL;
+
+    SignalController signalController = {signalState: PLAYING_NO_SIGNAL, .timer = 0, .fd = connect_to_tty()};
+    app.signalController = signalController;
     InitWindow(800, 200, "Hello world!");
     while (!WindowShouldClose()) {
         BeginDrawing();

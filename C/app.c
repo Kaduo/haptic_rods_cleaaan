@@ -10,6 +10,7 @@ void UpdateApp(App *me) {
     me->collided = false;
     Vector2 mousePosition = GetMousePositionFromProvider(&me->inputProvider);
 
+    // TODO CLEAN ME UP
     switch (me->inputProvider.inputState.leftMouseButtonState) {
         case LeftMouseButtonState_PRESSED:
             printf("hellow \n");
@@ -31,4 +32,5 @@ void UpdateApp(App *me) {
             }
             break;
     }
+    UpdateSignalController(&me->signalController, (me->selectedRodId !=-1), me->collided);
 }

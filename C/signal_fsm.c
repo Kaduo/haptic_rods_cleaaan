@@ -1,18 +1,6 @@
 #include "app.h"
 #include "signals.h"
-
-typedef enum SignalState {
-    NoSignal,
-    SelectedRodSignal,
-    ImpulseSignal,
-    CollisionSignal,
-} SignalState;
-
-typedef struct SignalController {
-    SignalState signalState;
-    int timer;
-    int fd;
-} SignalController;
+#include "signal_fsm.h"
 
 const int IMPULSE_DURATION = 60;
 
@@ -29,29 +17,29 @@ const Signal IMPULSE_SIGNAL = (Signal){
 void UpdateSignalController(SignalController *me, bool selected, bool collided) {
     SignalState oldSignalState = me->signalState;
     if (!selected) {
-        me->signalState = NoSignal;
+        me->signalState = PLAYING_NO_SIGNAL;
     } else {
         switch (me->signalState) {
-            case NoSignal:
+            case PLAYING_NO_SIGNAL:
                 if (selected){
-                    me->signalState = SelectedRodSignal;
+                    me->signalState = PLAYING_SELECTED_ROD_SIGNAL;
                 }
                 break;
-            case SelectedRodSignal:
+            case PLAYING_SELECTED_ROD_SIGNAL:
                 if (collided) {
-                    me->signalState = ImpulseSignal;
+                    me->signalState = PLAYING_IMPULSE_SIGNAL;
                 }
                 break;
-            case ImpulseSignal:
+            case PLAYING_IMPULSE_SIGNAL:
                 if (!collided) {
-                    me->signalState = SelectedRodSignal;
+                    me->signalState = PLAYING_SELECTED_ROD_SIGNAL;
                 } else if (me->timer > IMPULSE_DURATION) {
-                    me->signalState = CollisionSignal;
+                    me->signalState = PLAYING_COLLISION_SIGNAL;
                 }
                 break;
-            case CollisionSignal:
+            case PLAYING_COLLISION_SIGNAL:
                 if (!collided) {
-                    me->signalState = SelectedRodSignal;
+                    me->signalState = PLAYING_SELECTED_ROD_SIGNAL;
                 }
                 break;
         }
@@ -59,10 +47,10 @@ void UpdateSignalController(SignalController *me, bool selected, bool collided) 
     if (me->signalState != oldSignalState) {
         me->timer = 0;
         switch (me->signalState) {
-            case NoSignal:
+            case PLAYING_NO_SIGNAL:
                 clear_signal(me->fd);
                 break;
-            case ImpulseSignal:
+            case PLAYING_IMPULSE_SIGNAL:
                 set_signal(me->fd, 0, 0, IMPULSE_SIGNAL); // TODO FIXME
         }
     } else {
