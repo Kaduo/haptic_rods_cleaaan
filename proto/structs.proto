@@ -1,0 +1,43 @@
+edition = "2023";
+
+enum SignalShape {
+    SIGNAL_SHAPE_NO_SIGNAL = 0;
+    SIGNAL_SHAPE_STEADY = 1;
+    SIGNAL_SHAPE_SINE = 2;
+    SIGNAL_SHAPE_TRIANGLE = 3;
+    SIGNAL_SHAPE_FRONT_TEETH = 4;
+    SIGNAL_SHAPE_BACK_TEETH = 5;
+}
+
+message Signal {
+    SignalShape signalShape = 1;
+    uint32 period = 2; // Must be less than 2^16 - 1
+    uint32 amplitude = 3; // Must be less than 2^8 - 1
+    uint32 duty  = 4; // Must be less than 2^8 - 1
+    uint32 offset = 5; // Must be less than 2^8 - 1
+}
+
+message _Rectangle {
+    float width = 1;
+    float height = 2;
+    float x = 3;
+    float y = 4;
+}
+
+message _Color {
+    uint32 r = 1;
+    uint32 g = 2;
+    uint32 b = 3;
+    uint32 a = 4;
+}
+
+message Rod {
+    Signal signal = 1;
+    _Color color = 2;
+    _Rectangle rect = 3;
+    uint32 numericLength = 4;
+}
+
+message RodGroup {
+    repeated Rod rods = 1;
+}
