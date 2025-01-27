@@ -26,4 +26,4 @@ run: build
 	./haptic_rods
 
 build_tablet: $(CSRC)
-	$(CC) $(CFLAGS) $(CSRC) $(NANOPB_SRC) -I../../raylib -lraylib -o haptic_rods
+	$(CC) $(CFLAGS) $(CSRC) $(NANOPB_SRC) -I../../raylib/include -L../../raylib/lib -o haptic_rods
