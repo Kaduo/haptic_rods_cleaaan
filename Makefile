@@ -2,12 +2,10 @@ CSRC_DIR := "C"
 PYTHONSRC_DIR := "python"
 NANOPB_DIR = "external/nanopb-0.4.9.1-linux-x86"
 
-CC = gcc
 
 CFLAGS += "-I$(NANOPB_DIR)"
 CFLAGS += "-I$(CSRC_DIR)/proto"
 CFLAGS += "-I$(CSRC_DIR)"
-CFLAGS += "-std=gnu99"
 
 
 CSRC := $(wildcard C/*.c)
