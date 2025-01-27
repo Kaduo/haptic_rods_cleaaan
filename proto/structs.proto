@@ -1,20 +1,30 @@
 edition = "2023";
 
 enum SignalShape {
-    SIGNAL_SHAPE_NO_SIGNAL = 0;
-    SIGNAL_SHAPE_STEADY = 1;
-    SIGNAL_SHAPE_SINE = 2;
-    SIGNAL_SHAPE_TRIANGLE = 3;
-    SIGNAL_SHAPE_FRONT_TEETH = 4;
-    SIGNAL_SHAPE_BACK_TEETH = 5;
+    NO_SIGNAL = 0;
+    STEADY = 1;
+    SINE = 2;
+    TRIANGLE = 3;
+    FRONT_TEETH = 4;
+    BACK_TEETH = 5;
 }
 
 message Signal {
     SignalShape signalShape = 1;
-    uint32 period = 2; // Must be less than 2^16 - 1
-    uint32 amplitude = 3; // Must be less than 2^8 - 1
-    uint32 duty  = 4; // Must be less than 2^8 - 1
-    uint32 offset = 5; // Must be less than 2^8 - 1
+    uint32 period = 2; // 2 bytes
+    uint32 amplitude = 3; // 1 byte
+    uint32 duty  = 4; // 1 byte
+    uint32 offset = 5; // 1 byte
+    uint32 phase = 6; // 2 bytes
+}
+
+enum HapticProtocol {
+    UNDEFINED = 0x00;
+    PING = 0x01;
+    SET_DIR  = 0x82;
+    ADD_SIGNAL = 0x83;
+    PLAY = 0x84;
+    CLEAR = 0x85;
 }
 
 message _Rectangle {

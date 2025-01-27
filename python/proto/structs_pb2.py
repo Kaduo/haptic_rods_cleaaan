@@ -24,23 +24,25 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13proto/structs.proto\"l\n\x06Signal\x12!\n\x0bsignalShape\x18\x01 \x01(\x0e\x32\x0c.SignalShape\x12\x0e\n\x06period\x18\x02 \x01(\r\x12\x11\n\tamplitude\x18\x03 \x01(\r\x12\x0c\n\x04\x64uty\x18\x04 \x01(\r\x12\x0e\n\x06offset\x18\x05 \x01(\r\"A\n\n_Rectangle\x12\r\n\x05width\x18\x01 \x01(\x02\x12\x0e\n\x06height\x18\x02 \x01(\x02\x12\t\n\x01x\x18\x03 \x01(\x02\x12\t\n\x01y\x18\x04 \x01(\x02\"4\n\x06_Color\x12\t\n\x01r\x18\x01 \x01(\r\x12\t\n\x01g\x18\x02 \x01(\r\x12\t\n\x01\x62\x18\x03 \x01(\r\x12\t\n\x01\x61\x18\x04 \x01(\r\"h\n\x03Rod\x12\x17\n\x06signal\x18\x01 \x01(\x0b\x32\x07.Signal\x12\x16\n\x05\x63olor\x18\x02 \x01(\x0b\x32\x07._Color\x12\x19\n\x04rect\x18\x03 \x01(\x0b\x32\x0b._Rectangle\x12\x15\n\rnumericLength\x18\x04 \x01(\r\"\x1e\n\x08RodGroup\x12\x12\n\x04rods\x18\x01 \x03(\x0b\x32\x04.Rod*\xaf\x01\n\x0bSignalShape\x12\x1a\n\x16SIGNAL_SHAPE_NO_SIGNAL\x10\x00\x12\x17\n\x13SIGNAL_SHAPE_STEADY\x10\x01\x12\x15\n\x11SIGNAL_SHAPE_SINE\x10\x02\x12\x19\n\x15SIGNAL_SHAPE_TRIANGLE\x10\x03\x12\x1c\n\x18SIGNAL_SHAPE_FRONT_TEETH\x10\x04\x12\x1b\n\x17SIGNAL_SHAPE_BACK_TEETH\x10\x05\x62\x08\x65\x64itionsp\xe8\x07')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13proto/structs.proto\"{\n\x06Signal\x12!\n\x0bsignalShape\x18\x01 \x01(\x0e\x32\x0c.SignalShape\x12\x0e\n\x06period\x18\x02 \x01(\r\x12\x11\n\tamplitude\x18\x03 \x01(\r\x12\x0c\n\x04\x64uty\x18\x04 \x01(\r\x12\x0e\n\x06offset\x18\x05 \x01(\r\x12\r\n\x05phase\x18\x06 \x01(\r\"A\n\n_Rectangle\x12\r\n\x05width\x18\x01 \x01(\x02\x12\x0e\n\x06height\x18\x02 \x01(\x02\x12\t\n\x01x\x18\x03 \x01(\x02\x12\t\n\x01y\x18\x04 \x01(\x02\"4\n\x06_Color\x12\t\n\x01r\x18\x01 \x01(\r\x12\t\n\x01g\x18\x02 \x01(\r\x12\t\n\x01\x62\x18\x03 \x01(\r\x12\t\n\x01\x61\x18\x04 \x01(\r\"h\n\x03Rod\x12\x17\n\x06signal\x18\x01 \x01(\x0b\x32\x07.Signal\x12\x16\n\x05\x63olor\x18\x02 \x01(\x0b\x32\x07._Color\x12\x19\n\x04rect\x18\x03 \x01(\x0b\x32\x0b._Rectangle\x12\x15\n\rnumericLength\x18\x04 \x01(\r\"\x1e\n\x08RodGroup\x12\x12\n\x04rods\x18\x01 \x03(\x0b\x32\x04.Rod*a\n\x0bSignalShape\x12\r\n\tNO_SIGNAL\x10\x00\x12\n\n\x06STEADY\x10\x01\x12\x08\n\x04SINE\x10\x02\x12\x0c\n\x08TRIANGLE\x10\x03\x12\x0f\n\x0b\x46RONT_TEETH\x10\x04\x12\x0e\n\nBACK_TEETH\x10\x05*_\n\x0eHapticProtocol\x12\r\n\tUNDEFINED\x10\x00\x12\x08\n\x04PING\x10\x01\x12\x0c\n\x07SET_DIR\x10\x82\x01\x12\x0f\n\nADD_SIGNAL\x10\x83\x01\x12\t\n\x04PLAY\x10\x84\x01\x12\n\n\x05\x43LEAR\x10\x85\x01\x62\x08\x65\x64itionsp\xe8\x07')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'proto.structs_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
-  _globals['_SIGNALSHAPE']._serialized_start=393
-  _globals['_SIGNALSHAPE']._serialized_end=568
+  _globals['_SIGNALSHAPE']._serialized_start=407
+  _globals['_SIGNALSHAPE']._serialized_end=504
+  _globals['_HAPTICPROTOCOL']._serialized_start=506
+  _globals['_HAPTICPROTOCOL']._serialized_end=601
   _globals['_SIGNAL']._serialized_start=23
-  _globals['_SIGNAL']._serialized_end=131
-  _globals['__RECTANGLE']._serialized_start=133
-  _globals['__RECTANGLE']._serialized_end=198
-  _globals['__COLOR']._serialized_start=200
-  _globals['__COLOR']._serialized_end=252
-  _globals['_ROD']._serialized_start=254
-  _globals['_ROD']._serialized_end=358
-  _globals['_RODGROUP']._serialized_start=360
-  _globals['_RODGROUP']._serialized_end=390
+  _globals['_SIGNAL']._serialized_end=146
+  _globals['__RECTANGLE']._serialized_start=148
+  _globals['__RECTANGLE']._serialized_end=213
+  _globals['__COLOR']._serialized_start=215
+  _globals['__COLOR']._serialized_end=267
+  _globals['_ROD']._serialized_start=269
+  _globals['_ROD']._serialized_end=373
+  _globals['_RODGROUP']._serialized_start=375
+  _globals['_RODGROUP']._serialized_end=405
 # @@protoc_insertion_point(module_scope)

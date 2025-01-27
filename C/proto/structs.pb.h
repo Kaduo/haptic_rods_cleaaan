@@ -11,26 +11,37 @@
 
 /* Enum definitions */
 typedef enum _SignalShape {
-    SignalShape_SIGNAL_SHAPE_NO_SIGNAL = 0,
-    SignalShape_SIGNAL_SHAPE_STEADY = 1,
-    SignalShape_SIGNAL_SHAPE_SINE = 2,
-    SignalShape_SIGNAL_SHAPE_TRIANGLE = 3,
-    SignalShape_SIGNAL_SHAPE_FRONT_TEETH = 4,
-    SignalShape_SIGNAL_SHAPE_BACK_TEETH = 5
+    SignalShape_NO_SIGNAL = 0,
+    SignalShape_STEADY = 1,
+    SignalShape_SINE = 2,
+    SignalShape_TRIANGLE = 3,
+    SignalShape_FRONT_TEETH = 4,
+    SignalShape_BACK_TEETH = 5
 } SignalShape;
+
+typedef enum _HapticProtocol {
+    HapticProtocol_UNDEFINED = 0,
+    HapticProtocol_PING = 1,
+    HapticProtocol_SET_DIR = 130,
+    HapticProtocol_ADD_SIGNAL = 131,
+    HapticProtocol_PLAY = 132,
+    HapticProtocol_CLEAR = 133
+} HapticProtocol;
 
 /* Struct definitions */
 typedef struct _Signal {
     bool has_signalShape;
     SignalShape signalShape;
     bool has_period;
-    uint32_t period; /* Must be less than 2^16 - 1 */
+    uint32_t period; /* 2 bytes */
     bool has_amplitude;
-    uint32_t amplitude; /* Must be less than 2^8 - 1 */
+    uint32_t amplitude; /* 1 byte */
     bool has_duty;
-    uint32_t duty; /* Must be less than 2^8 - 1 */
+    uint32_t duty; /* 1 byte */
     bool has_offset;
-    uint32_t offset; /* Must be less than 2^8 - 1 */
+    uint32_t offset; /* 1 byte */
+    bool has_phase;
+    uint32_t phase; /* 2 bytes */
 } Signal;
 
 typedef struct __Rectangle {
@@ -77,9 +88,13 @@ extern "C" {
 #endif
 
 /* Helper constants for enums */
-#define _SignalShape_MIN SignalShape_SIGNAL_SHAPE_NO_SIGNAL
-#define _SignalShape_MAX SignalShape_SIGNAL_SHAPE_BACK_TEETH
-#define _SignalShape_ARRAYSIZE ((SignalShape)(SignalShape_SIGNAL_SHAPE_BACK_TEETH+1))
+#define _SignalShape_MIN SignalShape_NO_SIGNAL
+#define _SignalShape_MAX SignalShape_BACK_TEETH
+#define _SignalShape_ARRAYSIZE ((SignalShape)(SignalShape_BACK_TEETH+1))
+
+#define _HapticProtocol_MIN HapticProtocol_UNDEFINED
+#define _HapticProtocol_MAX HapticProtocol_CLEAR
+#define _HapticProtocol_ARRAYSIZE ((HapticProtocol)(HapticProtocol_CLEAR+1))
 
 #define Signal_signalShape_ENUMTYPE SignalShape
 
@@ -89,12 +104,12 @@ extern "C" {
 
 
 /* Initializer values for message structs */
-#define Signal_init_default                      {false, _SignalShape_MIN, false, 0, false, 0, false, 0, false, 0}
+#define Signal_init_default                      {false, _SignalShape_MIN, false, 0, false, 0, false, 0, false, 0, false, 0}
 #define _Rectangle_init_default                  {false, 0, false, 0, false, 0, false, 0}
 #define _Color_init_default                      {false, 0, false, 0, false, 0, false, 0}
 #define Rod_init_default                         {false, Signal_init_default, false, _Color_init_default, false, _Rectangle_init_default, false, 0}
 #define RodGroup_init_default                    {0, {Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default}}
-#define Signal_init_zero                         {false, _SignalShape_MIN, false, 0, false, 0, false, 0, false, 0}
+#define Signal_init_zero                         {false, _SignalShape_MIN, false, 0, false, 0, false, 0, false, 0, false, 0}
 #define _Rectangle_init_zero                     {false, 0, false, 0, false, 0, false, 0}
 #define _Color_init_zero                         {false, 0, false, 0, false, 0, false, 0}
 #define Rod_init_zero                            {false, Signal_init_zero, false, _Color_init_zero, false, _Rectangle_init_zero, false, 0}
@@ -106,6 +121,7 @@ extern "C" {
 #define Signal_amplitude_tag                     3
 #define Signal_duty_tag                          4
 #define Signal_offset_tag                        5
+#define Signal_phase_tag                         6
 #define _Rectangle_width_tag                     1
 #define _Rectangle_height_tag                    2
 #define _Rectangle_x_tag                         3
@@ -126,7 +142,8 @@ X(a, STATIC,   OPTIONAL, UENUM,    signalShape,       1) \
 X(a, STATIC,   OPTIONAL, UINT32,   period,            2) \
 X(a, STATIC,   OPTIONAL, UINT32,   amplitude,         3) \
 X(a, STATIC,   OPTIONAL, UINT32,   duty,              4) \
-X(a, STATIC,   OPTIONAL, UINT32,   offset,            5)
+X(a, STATIC,   OPTIONAL, UINT32,   offset,            5) \
+X(a, STATIC,   OPTIONAL, UINT32,   phase,             6)
 #define Signal_CALLBACK NULL
 #define Signal_DEFAULT NULL
 
@@ -178,9 +195,9 @@ extern const pb_msgdesc_t RodGroup_msg;
 
 /* Maximum encoded size of messages (where known) */
 #define PROTO_STRUCTS_PB_H_MAX_SIZE              RodGroup_size
-#define RodGroup_size                            8400
-#define Rod_size                                 82
-#define Signal_size                              26
+#define RodGroup_size                            9000
+#define Rod_size                                 88
+#define Signal_size                              32
 #define _Color_size                              24
 #define _Rectangle_size                          20
 

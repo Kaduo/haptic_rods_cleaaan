@@ -19,10 +19,10 @@ void main() {
         length = ftell (f);
         fseek (f, 0, SEEK_SET);
         buffer = malloc (length);
-    if (buffer)
-    {
-        fread (buffer, 1, length, f);
-    }
+        if (buffer)
+        {
+            fread (buffer, 1, length, f);
+        }
         fclose (f);
     }
 
