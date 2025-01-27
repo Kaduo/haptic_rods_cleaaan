@@ -27,7 +27,11 @@ run: build
 
 RAYLIB_PATH           ?= ../../raylib
 RAYLIB_RELEASE_PATH 	?= $(RAYLIB_PATH)/src
+RAYLIB_INCLUDE_PATH   ?= /usr/local/include
+RAYLIB_LIB_PATH       ?= /usr/local/lib
 INCLUDE_PATHS = -I. -I$(RAYLIB_PATH)/src -I$(RAYLIB_PATH)/src/external -I$(RAYLIB_PATH)/src/extras
+INCLUDE_PATHS += -I$(RAYLIB_INCLUDE_PATH)
+
 INCLUDE_PATHS += -I$(RPI_TOOLCHAIN_SYSROOT)/opt/vc/include
 INCLUDE_PATHS += -I$(RPI_TOOLCHAIN_SYSROOT)/opt/vc/include/interface/vmcs_host/linux
 INCLUDE_PATHS += -I$(RPI_TOOLCHAIN_SYSROOT)/opt/vc/include/interface/vcos/pthreads
