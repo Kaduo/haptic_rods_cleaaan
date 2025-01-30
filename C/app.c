@@ -32,6 +32,6 @@ void UpdateApp(App *me) {
             }
             break;
     }
-    SetDirection(me->signalController.fd, GetMouseAngleFromProvider(&me->inputProvider)*255, GetMouseSpeedFromProvider(&me->inputProvider));
+    SetDirection(me->signalController.fd, GetMouseAngleFromProvider(&me->inputProvider)*255/(2*314), GetMouseSpeedFromProvider(&me->inputProvider));
     UpdateSignalController(&me->signalController, me->selected, me->collided, &me->rodGroup.rods[me->selectedRodId]);
 }
