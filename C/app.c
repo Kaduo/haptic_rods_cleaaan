@@ -32,7 +32,9 @@ void UpdateApp(App *me) {
             }
             break;
     }
-    SetDirection(me->signalController.fd, GetMouseAngleFromProvider(&me->inputProvider)*255/(2*314), GetMouseSpeedFromProvider(&me->inputProvider));
+
+    // SetDirection(me->signalController.fd, GetMouseAngleFromProvider(&me->inputProvider)*255/(2*314), GetMouseSpeedFromProvider(&me->inputProvider));
+    
     if ((int)GetTime() % 5 == 0 && me->debugSwitch)  {
         printf("%d\n", (int)GetTime());
         me->angle +=10;
