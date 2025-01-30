@@ -10,6 +10,8 @@ typedef struct App {
     bool collided;
     bool selected;
     SignalController signalController;
+    int8_t angle;
+    int16_t speed;
 } App;
 
 void UpdateApp(App *me);

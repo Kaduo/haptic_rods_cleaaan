@@ -126,7 +126,7 @@ void SetSignal(int fd, int8_t angle, int8_t pulses, Signal signal) {
     PlayCurrentSignal(fd, 1);
 }
 
-void SetDirection(int fd, uint8_t angle, uint16_t speed) {
+void SetDirection(int fd, int8_t angle, int16_t speed) {
     #define DIR_BUFFER_LEN 4
     printf("angel : %d, sped : %d\n", angle, speed);
 

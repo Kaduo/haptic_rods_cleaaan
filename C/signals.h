@@ -12,7 +12,7 @@ Signal signal_new(SignalShape signalShape, uint8_t amplitude, uint8_t offset,
 void ClearSignal(int fd);
 void PlayCurrentSignal(int fd, int play);
 void Ping(int fd);
-void SetDirection(int fd, uint8_t angle, uint16_t speed);
+void SetDirection(int fd, int8_t angle, int16_t speed);
 void AddSignal(int fd, int8_t angle, int8_t pulses, Signal signal);
 
 void PrintSignal(Signal sig);
