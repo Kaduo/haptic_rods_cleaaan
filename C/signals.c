@@ -10,7 +10,7 @@
 
 #define TERMINAL "/dev/ttyUSB0"
 
-int set_interface_attribs(int fd, int speed)
+int SetInterfaceAttributes(int fd, int speed)
 {
     struct termios tty;
 
@@ -45,7 +45,7 @@ int set_interface_attribs(int fd, int speed)
     return 0;
 }
 
-void set_mincount(int fd, int mcount)
+void SetMincount(int fd, int mcount)
 {
     struct termios tty;
 
@@ -61,7 +61,7 @@ void set_mincount(int fd, int mcount)
         printf("Error tcsetattr: %s\n", strerror(errno));
 }
 
-int connect_to_tty() {
+int ConnectToTTY() {
     char *portname = TERMINAL;
 
     int fd;
@@ -71,7 +71,7 @@ int connect_to_tty() {
         return -1;
     }
     /*baudrate 1000000, 8 bits, no parity, 1 stop bit */
-    set_interface_attribs(fd, B1000000);
+    SetInterfaceAttributes(fd, B1000000);
 
     return fd;
 }
@@ -84,7 +84,7 @@ void write_to_tty(int fd, unsigned char *buffer, int buffer_len) {
     tcdrain(fd);    /* delay for output */
 }
 
-void add_signal(int fd, int8_t angle, int8_t pulses, Signal signal) {
+void AddSignal(int fd, int8_t angle, int8_t pulses, Signal signal) {
     #define ADD_BUFFER_LEN  11
     unsigned char buffer[ADD_BUFFER_LEN] = {
         (unsigned char)HapticProtocol_ADD_SIGNAL,
@@ -102,31 +102,31 @@ void add_signal(int fd, int8_t angle, int8_t pulses, Signal signal) {
     write_to_tty(fd, buffer, ADD_BUFFER_LEN);
 }
 
-void clear_signal(int fd) {
+void StopSignal(int fd) {
     #define CLEAR_BUFFER_LEN 1
     unsigned char buffer[CLEAR_BUFFER_LEN] = {HapticProtocol_CLEAR};
     write_to_tty(fd, buffer, CLEAR_BUFFER_LEN);
 }
 
-void ping(int fd) {
+void Ping(int fd) {
     #define PING_BUFFER_LEN 1
     unsigned char buffer[PING_BUFFER_LEN] = {HapticProtocol_PING};
     write_to_tty(fd, buffer, PING_BUFFER_LEN);
 }
 
-void play_signal(int fd, int play) {
+void PlayCurrentSignal(int fd, int play) {
     #define PLAY_BUFFER_LEN 2
     unsigned char buffer[PLAY_BUFFER_LEN] = {HapticProtocol_PLAY, play};
     write_to_tty(fd, buffer, PLAY_BUFFER_LEN);
 }
 
-void set_signal(int fd, int8_t angle, int8_t pulses, Signal signal) {
-    clear_signal(fd);
-    add_signal(fd, angle, pulses, signal);
-    play_signal(fd, 1);
+void SetSignal(int fd, int8_t angle, int8_t pulses, Signal signal) {
+    StopSignal(fd);
+    AddSignal(fd, angle, pulses, signal);
+    PlayCurrentSignal(fd, 1);
 }
 
-void set_direction(int fd, int8_t angle, int16_t speed) {
+void SetDirection(int fd, int8_t angle, int16_t speed) {
     #define DIR_BUFFER_LEN 4
 
     unsigned char buffer[DIR_BUFFER_LEN] = {HapticProtocol_SET_DIR, angle, speed, speed >> 8};

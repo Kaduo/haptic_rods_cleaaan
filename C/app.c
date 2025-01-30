@@ -32,5 +32,5 @@ void UpdateApp(App *me) {
             }
             break;
     }
-    UpdateSignalController(&me->signalController, (me->selectedRodId !=-1), me->collided);
+    UpdateSignalController(&me->signalController, (me->selectedRodId !=-1), me->collided, &me->rodGroup.rods[me->selectedRodId]);
 }

@@ -15,5 +15,5 @@ typedef struct SignalController {
     int fd;
 } SignalController;
 
-void UpdateSignalController(SignalController *me, bool selected, bool collided);
+void UpdateSignalController(SignalController *me, bool selected, bool collided, Rod *selectedRod);
 #endif

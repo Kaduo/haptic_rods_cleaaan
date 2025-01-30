@@ -14,7 +14,7 @@ const Signal IMPULSE_SIGNAL = (Signal){
 };
 
 
-void UpdateSignalController(SignalController *me, bool selected, bool collided) {
+void UpdateSignalController(SignalController *me, bool selected, bool collided, Rod *selectedRod) {
     SignalState oldSignalState = me->signalState;
     if (!selected) {
         me->signalState = PLAYING_NO_SIGNAL;
@@ -48,10 +48,17 @@ void UpdateSignalController(SignalController *me, bool selected, bool collided) 
         me->timer = 0;
         switch (me->signalState) {
             case PLAYING_NO_SIGNAL:
-                clear_signal(me->fd);
+                StopSignal(me->fd);
                 break;
             case PLAYING_IMPULSE_SIGNAL:
-                set_signal(me->fd, 0, 0, IMPULSE_SIGNAL); // TODO FIXME
+                SetSignal(me->fd, 0, 0, IMPULSE_SIGNAL);
+                break;
+            case PLAYING_COLLISION_SIGNAL:
+                StopSignal(me->fd); //TODO : CHECK if correct
+                break;
+            case PLAYING_SELECTED_ROD_SIGNAL:
+                SetSignal(me->fd, 0, 0, selectedRod->signal); // TODO : FIX angle?
+                break;
         }
     } else {
         me->timer += 1;
