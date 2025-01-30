@@ -128,6 +128,7 @@ void SetSignal(int fd, int8_t angle, int8_t pulses, Signal signal) {
 
 void SetDirection(int fd, int8_t angle, int16_t speed) {
     #define DIR_BUFFER_LEN 4
+    printf("angel : %d, sped : %d\n", angle, speed);
 
     unsigned char buffer[DIR_BUFFER_LEN] = {HapticProtocol_SET_DIR, angle, speed, speed >> 8};
     write_to_tty(fd, buffer, DIR_BUFFER_LEN);
