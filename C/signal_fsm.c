@@ -6,10 +6,8 @@ const int IMPULSE_DURATION = 60;
 
 const Signal IMPULSE_SIGNAL = (Signal){
     SignalShape_STEADY,
-    255,
-    255,
-    0,
-    0,
+    .offset = 255,
+    .amplitude = 255,
     0,
 };
 

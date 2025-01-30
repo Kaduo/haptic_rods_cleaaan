@@ -44,12 +44,14 @@ void main() {
     rod.rect.height = 50;
     rod.color.r = 255;
     rod.color.a = 255;
-    rod.signal.signalShape = SignalShape_SINE;
-    rod.signal.amplitude = 255;
-    rod.signal.period = 100;
 
     Rod rod2 = rod;
     rod2.rect.x = 100;
+    rod2.signal.signalShape = SignalShape_SINE;
+    rod2.signal.amplitude = 255;
+    rod2.signal.period = 255;
+    rod2.signal.offset = 255;
+
 
     RodGroup rodGroup = RodGroup_init_zero;
     printf("\n\n %d \n\n", rod.color.a);
