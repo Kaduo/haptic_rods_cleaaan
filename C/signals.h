@@ -9,7 +9,7 @@ void write_to_tty(int fd, unsigned char *buffer, int buffer_len);
 void SetSignal(int fd, int8_t angle, int8_t pulses, Signal signal);
 Signal signal_new(SignalShape signalShape, uint8_t amplitude, uint8_t offset,
                   uint8_t duty, uint16_t period, uint16_t phase);
-void StopSignal(int fd);
+void ClearSignal(int fd);
 void PlayCurrentSignal(int fd, int play);
 void Ping(int fd);
 void SetDirection(int fd, int8_t angle, int16_t speed);

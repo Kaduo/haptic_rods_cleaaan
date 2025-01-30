@@ -102,7 +102,7 @@ void AddSignal(int fd, int8_t angle, int8_t pulses, Signal signal) {
     write_to_tty(fd, buffer, ADD_BUFFER_LEN);
 }
 
-void StopSignal(int fd) {
+void ClearSignal(int fd) {
     #define CLEAR_BUFFER_LEN 1
     unsigned char buffer[CLEAR_BUFFER_LEN] = {HapticProtocol_CLEAR};
     write_to_tty(fd, buffer, CLEAR_BUFFER_LEN);
@@ -121,7 +121,7 @@ void PlayCurrentSignal(int fd, int play) {
 }
 
 void SetSignal(int fd, int8_t angle, int8_t pulses, Signal signal) {
-    StopSignal(fd);
+    ClearSignal(fd);
     AddSignal(fd, angle, pulses, signal);
     PlayCurrentSignal(fd, 1);
 }

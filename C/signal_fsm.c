@@ -54,15 +54,19 @@ void UpdateSignalController(SignalController *me, bool selected, bool collided, 
         me->timer = 0;
         switch (me->signalState) {
             case PLAYING_NO_SIGNAL:
-                StopSignal(me->fd);
+                printf("NO SIGNAL");
+                ClearSignal(me->fd);
                 break;
             case PLAYING_IMPULSE_SIGNAL:
+                printf("HSLKDJF");
                 SetSignal(me->fd, 0, 0, IMPULSE_SIGNAL);
                 break;
             case PLAYING_COLLISION_SIGNAL:
-                StopSignal(me->fd); //TODO : CHECK if correct
+                printf("HUH!\n");
+                ClearSignal(me->fd); //TODO : CHECK if correct
                 break;
             case PLAYING_SELECTED_ROD_SIGNAL:
+                printf("HIHI\n");
                 SetSignal(me->fd, 0, 0, selectedRod->signal); // TODO : FIX angle?
                 break;
         }
