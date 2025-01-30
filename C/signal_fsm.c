@@ -69,7 +69,7 @@ void UpdateSignalController(SignalController *me, bool selected, bool collided, 
                 break;
             case PLAYING_SELECTED_ROD_SIGNAL:
                 printf("SELECTED ROD SIGNAL!!!\n");
-                SetSignal(me->fd, -1, -1, selectedRod->signal);
+                SetSignal(me->fd, 45, -1, selectedRod->signal);
                 PrintSignal(selectedRod->signal);
                 break;
         }
