@@ -293,7 +293,7 @@ bool Move(RodGroup *rodGroup, int movingRodId, Vector2 targetTopLeft)
 
   XYBounds xyBounds = GetCollisionBounds(rodGroup, movingRodId, targetRod);
 
-  if (xyBounds.xBounds.nbBounds <= 1 && xyBounds.yBounds.nbBounds <= 1)
+  if (xyBounds.xBounds.nbBounds <= 2 && xyBounds.yBounds.nbBounds <= 2)
   {
     printf("HERE I AM!\n");
     SetTopLeft(&rodGroup->rods[movingRodId], targetTopLeft);
