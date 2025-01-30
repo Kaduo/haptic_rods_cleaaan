@@ -15,7 +15,7 @@ if __name__ == "__main__":
     rod_group = RodGroup()
     for x,sig in enumerate(sigs):
         for y in range(4):
-            rod = Rod(signal=sig, rect = _Rectangle(x=2*x*ROD_WIDTH, y=2*y*ROD_HEIGHT, width=ROD_WIDTH, height=ROD_HEIGHT), color = WHITE)
+            rod = Rod(signal=sig, rect = _Rectangle(x=30+2*x*ROD_WIDTH, y=30+2*y*ROD_HEIGHT, width=ROD_WIDTH, height=ROD_HEIGHT), color = WHITE)
             rod_group.rods.append(rod)
     with open("dummy.rg", "wb") as f:
         f.write(rod_group.SerializeToString())
