@@ -295,6 +295,7 @@ bool Move(RodGroup *rodGroup, int movingRodId, Vector2 targetTopLeft)
 
   if (xyBounds.xBounds.nbBounds <= 1 && xyBounds.yBounds.nbBounds <= 1)
   {
+    printf("HERE I AM!\n");
     SetTopLeft(&rodGroup->rods[movingRodId], targetTopLeft);
     return false;
   }
@@ -351,6 +352,7 @@ bool Move(RodGroup *rodGroup, int movingRodId, Vector2 targetTopLeft)
     }
   }
   SetTopLeft(&rodGroup->rods[movingRodId], GetTopLeft(bestRod));
+  printf("WAITTTT!\n");
   return true;
 }
 
