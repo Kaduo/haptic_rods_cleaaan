@@ -15,7 +15,7 @@ const Signal IMPULSE_SIGNAL = (Signal){
 
 SignalController NewSignalController() {
     SignalController signalController = {.timer = 0, .fd = ConnectToTTY(), .signalState = PLAYING_NO_SIGNAL};
-    SetDirection(signalController.fd, 0, 1000); // Necessary for signals to play.
+    SetDirection(signalController.fd, 0, 10); // Necessary for signals to play.
     return signalController;
 }
 
@@ -23,7 +23,6 @@ SignalController NewSignalController() {
 void UpdateSignalController(SignalController *me, bool selected, bool collided, Rod *selectedRod) {
     SignalState oldSignalState = me->signalState;
     if (!selected) {
-        printf("NO SIGNAL 1\n");
         me->signalState = PLAYING_NO_SIGNAL;
         me->timer += 1;
     } else {
