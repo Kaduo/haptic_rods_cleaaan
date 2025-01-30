@@ -2,7 +2,7 @@
 #include "signals.h"
 #include "signal_fsm.h"
 
-const int IMPULSE_DURATION = 60;
+const int IMPULSE_DURATION = 6000;
 
 const Signal IMPULSE_SIGNAL = (Signal){
     SignalShape_STEADY,
