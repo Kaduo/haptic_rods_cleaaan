@@ -18,6 +18,7 @@ void UpdateApp(App *me) {
                 if (CheckCollisionPointRec(mousePosition, GetRodRect(me->rodGroup.rods[i]))) {
                     printf("sdflsf\n");
                     me->selectedRodId = i;
+                    me->selected = true;
                     me->selectionOffset = Vector2Subtract(GetTopLeft(me->rodGroup.rods[i]), mousePosition);
                     break;
                 }
