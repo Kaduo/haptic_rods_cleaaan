@@ -9,6 +9,8 @@ const Signal IMPULSE_SIGNAL = (Signal){
     .offset = 255,
     .amplitude = 255,
     0,
+    0,
+    0,
 };
 
 SignalController NewSignalController() {
@@ -59,6 +61,7 @@ void UpdateSignalController(SignalController *me, bool selected, bool collided, 
             case PLAYING_IMPULSE_SIGNAL:
                 printf("IMPULSE SIGNAL\n");
                 SetSignal(me->fd, 0, 0, IMPULSE_SIGNAL);
+                PrintSignal(IMPULSE_SIGNAL);
                 break;
             case PLAYING_COLLISION_SIGNAL:
                 printf("COLLISION signal!\n");
