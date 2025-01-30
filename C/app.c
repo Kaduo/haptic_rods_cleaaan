@@ -35,13 +35,13 @@ void UpdateApp(App *me) {
 
     // SetDirection(me->signalController.fd, GetMouseAngleFromProvider(&me->inputProvider)*255/(2*314), GetMouseSpeedFromProvider(&me->inputProvider));
     
-    if ((int)GetTime() % 2 == 0 && me->debugSwitch)  {
-        printf("%d\n", (int)GetTime());
-        me->angle +=10;
-        me->debugSwitch = false;
-        SetDirection(me->signalController.fd, 45, me->angle);
-    } else if (!((int)GetTime() % 2 == 0)) {
-        me->debugSwitch = true;
-    }
+    // if ((int)GetTime() % 2 == 0 && me->debugSwitch)  {
+    //     printf("%d\n", (int)GetTime());
+    //     me->angle +=10;
+    //     me->debugSwitch = false;
+    //     SetDirection(me->signalController.fd, 45, me->angle);
+    // } else if (!((int)GetTime() % 2 == 0)) {
+    //     me->debugSwitch = true;
+    // }
     UpdateSignalController(&me->signalController, me->selected, me->collided, &me->rodGroup.rods[me->selectedRodId]);
 }
