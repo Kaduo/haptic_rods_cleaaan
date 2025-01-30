@@ -4,6 +4,7 @@
 #include "input.h"
 #include "physics.h"
 #include "raymath.h"
+#include "signals.h"
 
 void UpdateApp(App *me) {
     PollInputProvider(&me->inputProvider);
@@ -31,5 +32,6 @@ void UpdateApp(App *me) {
             }
             break;
     }
+    SetDirection(me->signalController.fd, GetMouseSpeedFromProvider(&me->inputProvider), GetMouseSpeedFromProvider(&me->inputProvider));
     UpdateSignalController(&me->signalController, me->selected, me->collided, &me->rodGroup.rods[me->selectedRodId]);
 }

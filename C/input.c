@@ -39,13 +39,18 @@ Vector2 GetMouseDeltaFromProvider(const InputProvider *me) {
     return Vector2Subtract(FromMousePosition(me->inputState.mousePosition), FromMousePosition(me->oldInputState.mousePosition));
 }
 
-float GetMouseSpeed(const InputProvider *me) {
+float GetMouseSpeedFromProvider(const InputProvider *me) {
     if (me->inputState.frameTime > 0) {
         return  Vector2Distance(FromMousePosition(me->inputState.mousePosition), FromMousePosition(me->oldInputState.mousePosition))/me->inputState.frameTime;
     } else {
         return 0;
     }
 }
+
+float GetMouseAngleFromProvider(const InputProvider *me) {
+    return Vector2Angle((Vector2){1, 0}, GetMouseDeltaFromProvider(me));
+}
+
 
 void AddInputStateToHistory(InputState inputState, InputHistory *inputHistory) {
     inputHistory->inputStates[inputHistory->inputStates_count] = inputState;

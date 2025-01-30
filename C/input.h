@@ -27,5 +27,7 @@ typedef struct InputProvider {
 
 void PollInputProvider(InputProvider *me);
 Vector2 GetMousePositionFromProvider(const InputProvider *inputProvider);
+float GetMouseSpeedFromProvider(const InputProvider *me);
+float GetMouseAngleFromProvider(const InputProvider *me);
 
 #endif
