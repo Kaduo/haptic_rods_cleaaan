@@ -12,6 +12,7 @@ typedef struct App {
     SignalController signalController;
     int8_t angle;
     int16_t speed;
+    bool debugSwitch;
 } App;
 
 void UpdateApp(App *me);
