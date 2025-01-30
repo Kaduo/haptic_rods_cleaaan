@@ -13,6 +13,12 @@ const Signal IMPULSE_SIGNAL = (Signal){
     0,
 };
 
+SignalController NewSignalController() {
+    SignalController signalController = {.timer = 0, .fd = ConnectToTTY(), .signalState = PLAYING_NO_SIGNAL};
+    SetDirection(signalController.fd, 0, 1000); // Necessary for signals to play.
+    return signalController;
+}
+
 
 void UpdateSignalController(SignalController *me, bool selected, bool collided, Rod *selectedRod) {
     SignalState oldSignalState = me->signalState;

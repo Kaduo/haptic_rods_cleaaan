@@ -61,8 +61,7 @@ void main() {
     app.rodGroup = rodGroup;
     app.inputProvider.inputHistory = NULL;
 
-    SignalController signalController = {signalState: PLAYING_NO_SIGNAL, .timer = 0, .fd = ConnectToTTY()};
-    app.signalController = signalController;
+    app.signalController = NewSignalController();
     InitWindow(800, 200, "Hello world!");
     while (!WindowShouldClose()) {
         BeginDrawing();
