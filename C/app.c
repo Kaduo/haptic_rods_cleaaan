@@ -24,13 +24,13 @@ void UpdateApp(App *me) {
             }
             break;
         case LeftMouseButtonState_RELEASED:
-            me->selectedRodId = -1;
+            me->selected = false;
             break;
         case LeftMouseButtonState_DOWN:
-            if (me->selectedRodId != -1) {
+            if (me->selected) {
                 me->collided = Move(&me->rodGroup, me->selectedRodId, Vector2Add(mousePosition, me->selectionOffset));
             }
             break;
     }
-    UpdateSignalController(&me->signalController, (me->selectedRodId !=-1), me->collided, &me->rodGroup.rods[me->selectedRodId]);
+    UpdateSignalController(&me->signalController, me->selected, me->collided, &me->rodGroup.rods[me->selectedRodId]);
 }

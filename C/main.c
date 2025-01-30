@@ -60,6 +60,8 @@ void main() {
     App app = {0};
     app.rodGroup = rodGroup;
     app.inputProvider.inputHistory = NULL;
+    app.collided = false;
+    app.selected = false;
 
     app.signalController = NewSignalController();
     InitWindow(800, 200, "Hello world!");

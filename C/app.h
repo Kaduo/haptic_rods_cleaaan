@@ -8,6 +8,7 @@ typedef struct App {
     InputProvider inputProvider;
     Vector2 selectionOffset;
     bool collided;
+    bool selected;
     SignalController signalController;
 } App;
 
