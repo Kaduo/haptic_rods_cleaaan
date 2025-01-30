@@ -34,6 +34,7 @@ void UpdateApp(App *me) {
     }
     SetDirection(me->signalController.fd, GetMouseAngleFromProvider(&me->inputProvider)*255/(2*314), GetMouseSpeedFromProvider(&me->inputProvider));
     if ((int)GetTime() % 5 == 0 && me->debugSwitch)  {
+        print("%d\n", (int)GetTime());
         me->angle +=10;
         me->debugSwitch = false;
         SetDirection(me->signalController.fd, me->angle, 0);
