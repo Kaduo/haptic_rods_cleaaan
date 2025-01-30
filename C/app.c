@@ -33,7 +33,7 @@ void UpdateApp(App *me) {
             break;
     }
     // SetDirection(me->signalController.fd, GetMouseAngleFromProvider(&me->inputProvider)*255/(2*314), GetMouseSpeedFromProvider(&me->inputProvider));
-    if ((int)GetTime() % 5 == 0)  {
+    if ((int)GetTime() % 5 == 0 && (int)(GetTime()*10) % 10 == 0 )  {
         me->angle +=10;
         SetDirection(me->signalController.fd, me->angle, 0);
     }
