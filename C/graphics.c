@@ -12,6 +12,7 @@ Color FromProtoColor(_Color color) {
 
 void DrawRod(Rod rod) {
     DrawRectangleRec(FromProtoRectangle(rod.rect), FromProtoColor(rod.color));
+    DrawRectangleLinesEx(FromProtoRectangle(rod.rect), 1, BLACK);
 }
 
 void DrawRodGroup(RodGroup *rodGroup) {
