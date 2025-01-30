@@ -23,7 +23,9 @@ SignalController NewSignalController() {
 void UpdateSignalController(SignalController *me, bool selected, bool collided, Rod *selectedRod) {
     SignalState oldSignalState = me->signalState;
     if (!selected) {
+        printf("NO SIGNAL 1\n");
         me->signalState = PLAYING_NO_SIGNAL;
+        me->timer += 1;
     } else {
         switch (me->signalState) {
             case PLAYING_NO_SIGNAL:
@@ -54,19 +56,19 @@ void UpdateSignalController(SignalController *me, bool selected, bool collided, 
         me->timer = 0;
         switch (me->signalState) {
             case PLAYING_NO_SIGNAL:
-                printf("NO SIGNAL");
+                printf("NO SIGNAL\n");
                 ClearSignal(me->fd);
                 break;
             case PLAYING_IMPULSE_SIGNAL:
-                printf("HSLKDJF");
+                printf("IMPULSE SIGNAL\n");
                 SetSignal(me->fd, 0, 0, IMPULSE_SIGNAL);
                 break;
             case PLAYING_COLLISION_SIGNAL:
-                printf("HUH!\n");
+                printf("COLLISION signal!\n");
                 ClearSignal(me->fd); //TODO : CHECK if correct
                 break;
             case PLAYING_SELECTED_ROD_SIGNAL:
-                printf("HIHI\n");
+                printf("SELECTED ROD SIGNAL!!!\n");
                 SetSignal(me->fd, 0, 0, selectedRod->signal); // TODO : FIX angle?
                 break;
         }
