@@ -181,7 +181,7 @@ extern "C" {
 #define MousePosition_y_tag                      2
 #define InputState_leftMouseButtonState_tag      1
 #define InputState_mousePosition_tag             2
-#define InputState_frameTime_tag                 4
+#define InputState_frameTime_tag                 3
 #define InputHistory_inputStates_tag             1
 
 /* Struct field encoding specification for nanopb */
@@ -237,7 +237,7 @@ X(a, STATIC,   OPTIONAL, FLOAT,    y,                 2)
 #define InputState_FIELDLIST(X, a) \
 X(a, STATIC,   OPTIONAL, UENUM,    leftMouseButtonState,   1) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  mousePosition,     2) \
-X(a, STATIC,   OPTIONAL, FLOAT,    frameTime,         4)
+X(a, STATIC,   OPTIONAL, FLOAT,    frameTime,         3)
 #define InputState_CALLBACK NULL
 #define InputState_DEFAULT NULL
 #define InputState_mousePosition_MSGTYPE MousePosition

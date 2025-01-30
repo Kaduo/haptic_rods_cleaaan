@@ -67,7 +67,7 @@ message MousePosition {
 message InputState {
     LeftMouseButtonState leftMouseButtonState = 1;
     MousePosition mousePosition = 2;
-    float frameTime = 4;
+    float frameTime = 3;
 }
 
 message InputHistory {
