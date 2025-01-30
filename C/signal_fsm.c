@@ -60,7 +60,7 @@ void UpdateSignalController(SignalController *me, bool selected, bool collided, 
                 break;
             case PLAYING_IMPULSE_SIGNAL:
                 printf("IMPULSE SIGNAL\n");
-                SetSignal(me->fd, 0, 0, IMPULSE_SIGNAL);
+                SetSignal(me->fd, -1, -1, IMPULSE_SIGNAL);
                 PrintSignal(IMPULSE_SIGNAL);
                 break;
             case PLAYING_COLLISION_SIGNAL:
@@ -69,7 +69,7 @@ void UpdateSignalController(SignalController *me, bool selected, bool collided, 
                 break;
             case PLAYING_SELECTED_ROD_SIGNAL:
                 printf("SELECTED ROD SIGNAL!!!\n");
-                SetSignal(me->fd, 0, 0, selectedRod->signal); // TODO : FIX angle?
+                SetSignal(me->fd, -1, -1, selectedRod->signal);
                 PrintSignal(selectedRod->signal);
                 break;
         }
