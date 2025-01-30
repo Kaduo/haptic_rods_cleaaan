@@ -15,7 +15,7 @@ const Signal IMPULSE_SIGNAL = (Signal){
 
 SignalController NewSignalController() {
     SignalController signalController = {.timer = 0, .fd = ConnectToTTY(), .signalState = PLAYING_NO_SIGNAL};
-    SetDirection(signalController.fd, 0, 10); // Necessary for signals to play.
+    SetDirection(signalController.fd, 78, 0); // Necessary for signals to play.
     return signalController;
 }
 
