@@ -70,6 +70,7 @@ void UpdateSignalController(SignalController *me, bool selected, bool collided, 
             case PLAYING_SELECTED_ROD_SIGNAL:
                 printf("SELECTED ROD SIGNAL!!!\n");
                 SetSignal(me->fd, 0, 0, selectedRod->signal); // TODO : FIX angle?
+                PrintSignal(selectedRod->signal);
                 break;
         }
     } else {
