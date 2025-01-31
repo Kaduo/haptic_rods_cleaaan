@@ -142,7 +142,7 @@ extern "C" {
 /* Initializer values for message structs */
 #define Signal_init_default                      {false, _SignalShape_MIN, false, 0, false, 0, false, 0, false, 0, false, 0}
 #define _Rectangle_init_default                  {false, 0, false, 0, false, 0, false, 0}
-#define _Color_init_default                      {false, 0, false, 0, false, 0, false, 0}
+#define _Color_init_default                      {false, 255u, false, 255u, false, 255u, false, 255u}
 #define Rod_init_default                         {false, Signal_init_default, false, _Color_init_default, false, _Rectangle_init_default, false, 0}
 #define RodGroup_init_default                    {0, {Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default, Rod_init_default}}
 #define MousePosition_init_default               {false, 0, false, 0}
@@ -209,7 +209,7 @@ X(a_, STATIC,   OPTIONAL, UINT32,   g,                 2) \
 X(a_, STATIC,   OPTIONAL, UINT32,   b,                 3) \
 X(a_, STATIC,   OPTIONAL, UINT32,   a,                 4)
 #define _Color_CALLBACK NULL
-#define _Color_DEFAULT NULL
+#define _Color_DEFAULT (const pb_byte_t*)"\x08\xff\x01\x10\xff\x01\x18\xff\x01\x20\xff\x01\x00"
 
 #define Rod_FIELDLIST(X, a) \
 X(a, STATIC,   OPTIONAL, MESSAGE,  signal,            1) \

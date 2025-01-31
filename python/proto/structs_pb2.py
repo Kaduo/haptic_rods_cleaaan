@@ -24,33 +24,33 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13proto/structs.proto\"{\n\x06Signal\x12!\n\x0bsignalShape\x18\x01 \x01(\x0e\x32\x0c.SignalShape\x12\x0e\n\x06period\x18\x02 \x01(\r\x12\x11\n\tamplitude\x18\x03 \x01(\r\x12\x0c\n\x04\x64uty\x18\x04 \x01(\r\x12\x0e\n\x06offset\x18\x05 \x01(\r\x12\r\n\x05phase\x18\x06 \x01(\r\"A\n\n_Rectangle\x12\r\n\x05width\x18\x01 \x01(\x02\x12\x0e\n\x06height\x18\x02 \x01(\x02\x12\t\n\x01x\x18\x03 \x01(\x02\x12\t\n\x01y\x18\x04 \x01(\x02\"4\n\x06_Color\x12\t\n\x01r\x18\x01 \x01(\r\x12\t\n\x01g\x18\x02 \x01(\r\x12\t\n\x01\x62\x18\x03 \x01(\r\x12\t\n\x01\x61\x18\x04 \x01(\r\"h\n\x03Rod\x12\x17\n\x06signal\x18\x01 \x01(\x0b\x32\x07.Signal\x12\x16\n\x05\x63olor\x18\x02 \x01(\x0b\x32\x07._Color\x12\x19\n\x04rect\x18\x03 \x01(\x0b\x32\x0b._Rectangle\x12\x15\n\rnumericLength\x18\x04 \x01(\r\"\x1e\n\x08RodGroup\x12\x12\n\x04rods\x18\x01 \x03(\x0b\x32\x04.Rod\"%\n\rMousePosition\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\"{\n\nInputState\x12\x33\n\x14leftMouseButtonState\x18\x01 \x01(\x0e\x32\x15.LeftMouseButtonState\x12%\n\rmousePosition\x18\x02 \x01(\x0b\x32\x0e.MousePosition\x12\x11\n\tframeTime\x18\x03 \x01(\x02\"0\n\x0cInputHistory\x12 \n\x0binputStates\x18\x01 \x03(\x0b\x32\x0b.InputState*a\n\x0bSignalShape\x12\r\n\tNO_SIGNAL\x10\x00\x12\n\n\x06STEADY\x10\x01\x12\x08\n\x04SINE\x10\x02\x12\x0c\n\x08TRIANGLE\x10\x03\x12\x0f\n\x0b\x46RONT_TEETH\x10\x04\x12\x0e\n\nBACK_TEETH\x10\x05*_\n\x0eHapticProtocol\x12\r\n\tUNDEFINED\x10\x00\x12\x08\n\x04PING\x10\x01\x12\x0c\n\x07SET_DIR\x10\x82\x01\x12\x0f\n\nADD_SIGNAL\x10\x83\x01\x12\t\n\x04PLAY\x10\x84\x01\x12\n\n\x05\x43LEAR\x10\x85\x01*C\n\x14LeftMouseButtonState\x12\x0c\n\x08RELEASED\x10\x00\x12\x0b\n\x07PRESSED\x10\x01\x12\x08\n\x04\x44OWN\x10\x02\x12\x06\n\x02UP\x10\x03\x62\x08\x65\x64itionsp\xe8\x07')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13proto/structs.proto\"{\n\x06Signal\x12!\n\x0bsignalShape\x18\x01 \x01(\x0e\x32\x0c.SignalShape\x12\x0e\n\x06period\x18\x02 \x01(\r\x12\x11\n\tamplitude\x18\x03 \x01(\r\x12\x0c\n\x04\x64uty\x18\x04 \x01(\r\x12\x0e\n\x06offset\x18\x05 \x01(\r\x12\r\n\x05phase\x18\x06 \x01(\r\"A\n\n_Rectangle\x12\r\n\x05width\x18\x01 \x01(\x02\x12\x0e\n\x06height\x18\x02 \x01(\x02\x12\t\n\x01x\x18\x03 \x01(\x02\x12\t\n\x01y\x18\x04 \x01(\x02\"H\n\x06_Color\x12\x0e\n\x01r\x18\x01 \x01(\r:\x03\x32\x35\x35\x12\x0e\n\x01g\x18\x02 \x01(\r:\x03\x32\x35\x35\x12\x0e\n\x01\x62\x18\x03 \x01(\r:\x03\x32\x35\x35\x12\x0e\n\x01\x61\x18\x04 \x01(\r:\x03\x32\x35\x35\"h\n\x03Rod\x12\x17\n\x06signal\x18\x01 \x01(\x0b\x32\x07.Signal\x12\x16\n\x05\x63olor\x18\x02 \x01(\x0b\x32\x07._Color\x12\x19\n\x04rect\x18\x03 \x01(\x0b\x32\x0b._Rectangle\x12\x15\n\rnumericLength\x18\x04 \x01(\r\"\x1e\n\x08RodGroup\x12\x12\n\x04rods\x18\x01 \x03(\x0b\x32\x04.Rod\"%\n\rMousePosition\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\"{\n\nInputState\x12\x33\n\x14leftMouseButtonState\x18\x01 \x01(\x0e\x32\x15.LeftMouseButtonState\x12%\n\rmousePosition\x18\x02 \x01(\x0b\x32\x0e.MousePosition\x12\x11\n\tframeTime\x18\x03 \x01(\x02\"0\n\x0cInputHistory\x12 \n\x0binputStates\x18\x01 \x03(\x0b\x32\x0b.InputState*a\n\x0bSignalShape\x12\r\n\tNO_SIGNAL\x10\x00\x12\n\n\x06STEADY\x10\x01\x12\x08\n\x04SINE\x10\x02\x12\x0c\n\x08TRIANGLE\x10\x03\x12\x0f\n\x0b\x46RONT_TEETH\x10\x04\x12\x0e\n\nBACK_TEETH\x10\x05*_\n\x0eHapticProtocol\x12\r\n\tUNDEFINED\x10\x00\x12\x08\n\x04PING\x10\x01\x12\x0c\n\x07SET_DIR\x10\x82\x01\x12\x0f\n\nADD_SIGNAL\x10\x83\x01\x12\t\n\x04PLAY\x10\x84\x01\x12\n\n\x05\x43LEAR\x10\x85\x01*C\n\x14LeftMouseButtonState\x12\x0c\n\x08RELEASED\x10\x00\x12\x0b\n\x07PRESSED\x10\x01\x12\x08\n\x04\x44OWN\x10\x02\x12\x06\n\x02UP\x10\x03\x62\x08\x65\x64itionsp\xe8\x07')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'proto.structs_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
-  _globals['_SIGNALSHAPE']._serialized_start=621
-  _globals['_SIGNALSHAPE']._serialized_end=718
-  _globals['_HAPTICPROTOCOL']._serialized_start=720
-  _globals['_HAPTICPROTOCOL']._serialized_end=815
-  _globals['_LEFTMOUSEBUTTONSTATE']._serialized_start=817
-  _globals['_LEFTMOUSEBUTTONSTATE']._serialized_end=884
+  _globals['_SIGNALSHAPE']._serialized_start=641
+  _globals['_SIGNALSHAPE']._serialized_end=738
+  _globals['_HAPTICPROTOCOL']._serialized_start=740
+  _globals['_HAPTICPROTOCOL']._serialized_end=835
+  _globals['_LEFTMOUSEBUTTONSTATE']._serialized_start=837
+  _globals['_LEFTMOUSEBUTTONSTATE']._serialized_end=904
   _globals['_SIGNAL']._serialized_start=23
   _globals['_SIGNAL']._serialized_end=146
   _globals['__RECTANGLE']._serialized_start=148
   _globals['__RECTANGLE']._serialized_end=213
   _globals['__COLOR']._serialized_start=215
-  _globals['__COLOR']._serialized_end=267
-  _globals['_ROD']._serialized_start=269
-  _globals['_ROD']._serialized_end=373
-  _globals['_RODGROUP']._serialized_start=375
-  _globals['_RODGROUP']._serialized_end=405
-  _globals['_MOUSEPOSITION']._serialized_start=407
-  _globals['_MOUSEPOSITION']._serialized_end=444
-  _globals['_INPUTSTATE']._serialized_start=446
-  _globals['_INPUTSTATE']._serialized_end=569
-  _globals['_INPUTHISTORY']._serialized_start=571
-  _globals['_INPUTHISTORY']._serialized_end=619
+  _globals['__COLOR']._serialized_end=287
+  _globals['_ROD']._serialized_start=289
+  _globals['_ROD']._serialized_end=393
+  _globals['_RODGROUP']._serialized_start=395
+  _globals['_RODGROUP']._serialized_end=425
+  _globals['_MOUSEPOSITION']._serialized_start=427
+  _globals['_MOUSEPOSITION']._serialized_end=464
+  _globals['_INPUTSTATE']._serialized_start=466
+  _globals['_INPUTSTATE']._serialized_end=589
+  _globals['_INPUTHISTORY']._serialized_start=591
+  _globals['_INPUTHISTORY']._serialized_end=639
 # @@protoc_insertion_point(module_scope)

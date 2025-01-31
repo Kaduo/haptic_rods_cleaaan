@@ -12,12 +12,11 @@
 const int TABLET_WIDTH = 1000;
 const int TABLET_HEIGHT = 600;
 
-
 int main() {
 
     char * buffer = 0;
     long length;
-    FILE * f = fopen ("dummy.rg", "rb");
+    FILE * f = fopen ("only_periods.rg", "rb");
 
     if (f)
     {
