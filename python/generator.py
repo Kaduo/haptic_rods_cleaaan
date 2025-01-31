@@ -72,7 +72,7 @@ COLORS = [WHITE, RED, GREEN, PURPLE, YELLOW, DARK_GREEN, BLACK, BROWN, BLUE, ORA
 PERIODS = [0, 10, 30, 90]
 
 def lambda_rod():
-    return  Rod(signal=Signal(signalShape=SignalShape.SINE, period=0, amplitude=255), rect=_Rectangle(width=ROD_WIDTH, height=ROD_HEIGHT))
+    return  Rod(signal=Signal(signalShape=SignalShape.SINE, period=0, amplitude=255, offset=20), rect=_Rectangle(width=ROD_WIDTH, height=ROD_HEIGHT))
 
 def make_only_periods():
     rod_group = RodGroup()

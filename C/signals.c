@@ -106,6 +106,7 @@ void ClearSignal(int fd) {
     #define CLEAR_BUFFER_LEN 1
     unsigned char buffer[CLEAR_BUFFER_LEN] = {HapticProtocol_CLEAR};
     write_to_tty(fd, buffer, CLEAR_BUFFER_LEN);
+    PlayCurrentSignal(fd, 0);
 }
 
 void Ping(int fd) {
