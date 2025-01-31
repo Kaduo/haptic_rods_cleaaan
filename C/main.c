@@ -16,7 +16,7 @@ int main() {
 
     char * buffer = 0;
     long length;
-    FILE * f = fopen ("only_periods.rg", "rb");
+    FILE * f = fopen ("weird.rg", "rb");
 
     if (f)
     {
