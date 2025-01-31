@@ -73,7 +73,7 @@ void UpdateSignalController(SignalController *me, bool selected, bool collided, 
                 PrintSignal(selectedRod->signal);
                 break;
         }
-        SetDirection(me->fd, 78, 0);
+        SetDirection(me->fd, 10, 10);
     } else {
         me->timer += 1;
     }
