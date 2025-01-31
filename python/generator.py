@@ -116,6 +116,30 @@ def make_weird_signals():
     rod.color.CopyFrom(ORANGE)
     rod_group.rods.append(rod)
 
+    rod = lambda_rod()
+    rod.signal.period = 2**16 - 1
+    rod.color.CopyFrom(RED)
+    rod_group.rods.append(rod)
+
+    rod = lambda_rod()
+    rod.signal.period = 1000
+    rod.color.CopyFrom(GREEN)
+    rod_group.rods.append(rod)
+
+
+    rod = lambda_rod()
+    rod.signal.period = 1000
+    rod.signal.offset = 200
+    rod.color.CopyFrom(DARK_GREEN)
+    rod_group.rods.append(rod)
+
+    rod = lambda_rod()
+    rod.signal.signalShape = SignalShape.STEADY
+    rod.signal.period = 1
+    rod.color.CopyFrom(YELLOW)
+    rod_group.rods.append(rod)
+
+
     return shuffle_group(rod_group)
 
 
