@@ -2,7 +2,7 @@
 #include "signals.h"
 #include "signal_fsm.h"
 
-const int IMPULSE_DURATION = 6000;
+const int IMPULSE_DURATION = 60; // TODO : this is in frames, should be in seconds
 
 const Signal IMPULSE_SIGNAL = (Signal){
     SignalShape_STEADY,
@@ -73,6 +73,7 @@ void UpdateSignalController(SignalController *me, bool selected, bool collided, 
                 PrintSignal(selectedRod->signal);
                 break;
         }
+        SetDirection(me->fd, 78, 0);
     } else {
         me->timer += 1;
     }
