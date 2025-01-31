@@ -51,6 +51,7 @@ int main() {
 
     app.signalController = NewSignalController();
     InitWindow(TABLET_WIDTH, TABLET_HEIGHT, "Hello world!");
+    SetTargetFPS(30);
     while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(WHITE);

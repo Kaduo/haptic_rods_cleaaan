@@ -2,7 +2,7 @@
 #include "signals.h"
 #include "signal_fsm.h"
 
-const int IMPULSE_DURATION = 60; // TODO : this is in frames, should be in seconds
+const int IMPULSE_DURATION = 2; // TODO : this is in frames, should be in seconds
 
 const Signal IMPULSE_SIGNAL = (Signal){
     .signalShape = SignalShape_STEADY,
