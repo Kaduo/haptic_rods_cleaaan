@@ -5,7 +5,7 @@
 const int IMPULSE_DURATION = 60; // TODO : this is in frames, should be in seconds
 
 const Signal IMPULSE_SIGNAL = (Signal){
-    SignalShape_STEADY,
+    .signalShape = SignalShape_STEADY,
     .offset = 255,
     .amplitude = 255,
     0,
