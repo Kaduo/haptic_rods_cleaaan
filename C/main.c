@@ -13,7 +13,7 @@ const int TABLET_WIDTH = 1000;
 const int TABLET_HEIGHT = 600;
 
 
-void main() {
+int main() {
 
     char * buffer = 0;
     long length;
@@ -59,4 +59,6 @@ void main() {
         DrawRodGroup(&app.rodGroup);
         EndDrawing();
     }
+
+    return 0;
 }

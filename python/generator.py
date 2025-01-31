@@ -1,7 +1,7 @@
 from proto.structs_pb2 import Rod, Signal, RodGroup, _Color, _Rectangle, SignalShape
 
 
-def sine(period, amplitude=255):
+def sine(period, amplitude=255, offset=10):
     return Signal(signalShape=SignalShape.SINE, period=period, amplitude=amplitude)
 
 
